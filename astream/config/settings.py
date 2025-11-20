@@ -6,7 +6,7 @@ import sys
 # ===========================
 # Version de l'addon
 # ===========================
-ADDON_VERSION = "2.1.0"
+ADDON_VERSION = "2.1.1"
 
 # ===========================
 # Domaines exclus
@@ -145,5 +145,5 @@ def get_base_manifest() -> Dict[str, Any]:
 # ===========================
 # Configuration de la base de données
 # ===========================
-database_url = f"sqlite:///{settings.DATABASE_PATH}" if settings.DATABASE_TYPE == "sqlite" else settings.DATABASE_URL
-database = Database(database_url)
+database_url = settings.DATABASE_PATH if settings.DATABASE_TYPE == "sqlite" else settings.DATABASE_URL
+database = Database(f"{'sqlite' if settings.DATABASE_TYPE == 'sqlite' else 'postgresql'}://{'/' if settings.DATABASE_TYPE == 'sqlite' else ''}{database_url}")
