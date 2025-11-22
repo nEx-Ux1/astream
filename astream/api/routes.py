@@ -75,7 +75,7 @@ async def manifest(
 
     try:
         unique_genres = await catalog_service.extract_unique_genres()
-        base_manifest["catalogs"][0]["extra"][2]["options"] = unique_genres
+        base_manifest["catalogs"][0]["extra"][1]["options"] = unique_genres
         logger.log("API", f"MANIFEST - Ajout de {len(unique_genres)} options de genre depuis le catalogue")
     except Exception as e:
         logger.error(f"MANIFEST - Echec de l'extraction des genres: {e}")
@@ -176,7 +176,7 @@ async def manifest_default(request: Request) -> Dict[str, Any]:
 
     try:
         unique_genres = await catalog_service.extract_unique_genres()
-        base_manifest["catalogs"][0]["extra"][2]["options"] = unique_genres
+        base_manifest["catalogs"][0]["extra"][1]["options"] = unique_genres
         logger.log("API", f"MANIFEST - Ajout de {len(unique_genres)} options de genre depuis le catalogue")
     except Exception as e:
         logger.error(f"MANIFEST - Echec de l'extraction des genres: {e}")
