@@ -68,6 +68,10 @@ class AnimeSamaPlayerExtractor(BaseScraper):
                             "language": language
                         })
 
+                if not player_urls_with_language:
+                    logger.log("DATABASE", f"Aucun player trouvé pour {cache_key} - pas de cache")
+                    return None
+
                 cache_data = {
                     "player_urls": player_urls_with_language,
                     "anime_slug": anime_slug,
