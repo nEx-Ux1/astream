@@ -20,7 +20,7 @@ jobs:
     - name: Get version from settings.py
       id: get-version
       run: |
-        VERSION=$(grep 'ADDON_VERSION = ' astream/config/settings.py | sed -n 's/.*ADDON_VERSION = "\([^"]*\)".*/\1/p')
+        VERSION=$(grep '"version":' astream/config/settings.py | sed -n 's/.*"version": "\([^"]*\)".*/\1/p')
         echo "Extracted version: $VERSION"
         echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
